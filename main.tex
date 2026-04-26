@@ -1,30 +1,37 @@
 \documentclass[11pt]{article}
 \usepackage{jmlr2e}
 \usepackage{booktabs}
-\usepackage{hyperref}
 \usepackage{xcolor}
-\usepackage[section]{placeins}  % keeps figures within their section
+\usepackage[section]{placeins}
+\usepackage{hyperref}
 
 \hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue}
 
-\jmlrheading{1}{2026}{1--6}{4/26}{4/26}{Konark}
-\ShortHeadings{An Empirical Study of Double Descent in Polynomial Regression}{Konark}
+\pagestyle{plain}
+
+\ShortHeadings{}{}
 \firstpageno{1}
+
+\makeatletter
+\def\@firstpagehead{}
+\makeatother
 
 \title{An Empirical Study of Double Descent\\ in Polynomial Regression}
 
 \author{%
-  \name Konark \email itsmekonark@gmail.com \\
+  \name Konark \email{} \\
   \addr School of Computer Science\\
         Constructor University Bremen\\
         28759 Bremen, Germany
 }
 
-\editor{Academic Skills in Computer Science}
-
 \begin{document}
 
 \maketitle
+\thispagestyle{plain}
+
+\noindent Github: \href{https://github.com/konark2006/Academic-Skills-in-CS-Konark-Konark-30008219-}{link}
+\par\vspace{6pt}
 
 \begin{abstract}
 Machine-learning textbooks teach that as a model gets more complex,

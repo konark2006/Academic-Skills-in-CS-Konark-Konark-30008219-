@@ -17,9 +17,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# ---------------------------------------------------------------------------
-# Plot style
-# ---------------------------------------------------------------------------
 plt.rcParams.update({
     "font.family": "serif",
     "font.size": 9,
@@ -38,13 +35,6 @@ OUT = os.path.join(os.path.dirname(__file__), "figures")
 os.makedirs(OUT, exist_ok=True)
 
 
-# ---------------------------------------------------------------------------
-# Data and model
-#
-# Truth:  y = sin(2*pi*x) + 0.3*x + epsilon,    epsilon ~ N(0, sigma^2)
-# Inputs: x ~ Uniform(0, 1)
-# Basis:  Legendre polynomials on [-1, 1] (orthonormal version)
-# ---------------------------------------------------------------------------
 def f_star(x):
     return np.sin(2 * np.pi * x) + 0.3 * x
 
@@ -86,9 +76,6 @@ def fit_predict(Xtr, ytr, Xte, ridge=0.0):
     return Xte @ beta, beta
 
 
-# ---------------------------------------------------------------------------
-# Experiment 1: classical U-curve (n >> p)
-# ---------------------------------------------------------------------------
 def experiment_classical_ushape():
     n_train, n_test, sigma = 200, 2000, 0.3
     degrees = np.arange(1, 25)
@@ -129,15 +116,12 @@ def experiment_classical_ushape():
     plt.close(fig)
 
 
-# ---------------------------------------------------------------------------
-# Experiment 2: double descent as p crosses n
-# ---------------------------------------------------------------------------
 def experiment_double_descent():
     n_train, n_test, sigma = 30, 2000, 0.3
     p_values = np.unique(np.concatenate([
-        np.arange(1, n_train),               # 1..29
-        np.arange(n_train, n_train + 6),     # 30..35  (around the spike)
-        np.arange(n_train + 6, 200, 4),      # sparser further out
+        np.arange(1, n_train),
+        np.arange(n_train, n_train + 6),
+        np.arange(n_train + 6, 200, 4),
     ]))
     n_repeats = 80
 
@@ -159,7 +143,7 @@ def experiment_double_descent():
     test_med = np.median(test_err, axis=0)
     test_q25 = np.percentile(test_err, 25, axis=0)
     test_q75 = np.percentile(test_err, 75, axis=0)
-    train_mean = np.maximum(train_err.mean(0), 1e-12)  # clip for log plot
+    train_mean = np.maximum(train_err.mean(0), 1e-12)
 
     fig, ax = plt.subplots(figsize=(3.4, 2.4))
     ax.plot(p_values, train_mean, "o-", label="Train MSE",
@@ -180,9 +164,6 @@ def experiment_double_descent():
     plt.close(fig)
 
 
-# ---------------------------------------------------------------------------
-# Experiment 3: Monte Carlo bias-variance decomposition
-# ---------------------------------------------------------------------------
 def experiment_bias_variance():
     n_train, sigma = 30, 0.3
     p_values = np.arange(2, 120, 2)
@@ -226,9 +207,6 @@ def experiment_bias_variance():
     plt.close(fig)
 
 
-# ---------------------------------------------------------------------------
-# Experiment 4: ridge regularisation removes the spike
-# ---------------------------------------------------------------------------
 def experiment_ridge():
     n_train, n_test, sigma = 30, 1000, 0.3
     p_values = np.unique(np.concatenate([
