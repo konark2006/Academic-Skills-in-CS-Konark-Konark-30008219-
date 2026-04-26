@@ -6,7 +6,7 @@ This repository contains a short paper and the code that produced it. It was wri
 
 I chose this topic because I worked on something similar in my Machine Learning course this year. That class introduced me to ideas like overfitting, the bias–variance trade-off, and how a model's error changes as you make it more complex. Double descent is a surprising twist on that story, so it felt like a natural next step for me to explore and write about.
 
-## What the paper is about (in plain words)
+## What the paper is about
 
 In machine learning, when you make a model more and more complex, you usually expect it to first get better and then get worse. The error curve looks like a U: it goes down, hits a sweet spot, and then climbs back up because the model starts memorising the training data instead of learning the pattern.
 
