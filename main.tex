@@ -3,6 +3,7 @@
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage[section]{placeins}  % keeps figures within their section
 
 \hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue}
 
@@ -142,7 +143,7 @@ bit-for-bit reproducible.
 
 \subsection{The classical regime: a tame U-curve}
 
-\begin{figure}[t]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.55\linewidth]{figures/fig_classical_ushape.pdf}
 \caption{Classical U-shaped trade-off. With $n=200$ training points
@@ -171,7 +172,7 @@ training data, $p$ now sweeps through---and well past---the
 enough parameters to fit every training point exactly.
 Figure~\ref{fig:dd} shows what happens.
 
-\begin{figure}[t]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.55\linewidth]{figures/fig_double_descent.pdf}
 \caption{Double descent in least-squares polynomial regression.
@@ -209,7 +210,7 @@ at bias. To settle the question empirically, I split the test error
 into squared bias and variance using $400$ independent training
 samples (Figure~\ref{fig:bv}).
 
-\begin{figure}[t]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.55\linewidth]{figures/fig_bias_variance_decomp.pdf}
 \caption{Monte Carlo bias--variance decomposition with $n=30$
@@ -236,7 +237,7 @@ with the right amount of ridge, the test error is monotone
 decreasing in $p$ and the spike disappears entirely.
 Figure~\ref{fig:ridge} reproduces this finding.
 
-\begin{figure}[t]
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.55\linewidth]{figures/fig_ridge_regularization.pdf}
 \caption{Effect of ridge regularisation on double descent. Even
